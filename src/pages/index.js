@@ -11,6 +11,10 @@ export default function Home() {
     }));
   };
 
+  const resetChecklist = () => {
+    setCheckedItems({});
+  };
+
   const totalItems = checklistItems.reduce(
     (total, group) => total + group.items.length,
     0
@@ -19,29 +23,31 @@ export default function Home() {
   const progress = (checkedCount / totalItems) * 100;
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-300 dark:bg-zinc-900 py-12">
+    <div className="flex flex-col justify-center items-center bg-zinc-900 py-12">
       <div className="space-y-8 p-4 border border-violet-400 rounded-xl">
         {checklistItems.map((group, index) => (
-          <div key={index} className="space-y-2">
+          <div key={index} className="space-y-2 text-white">
             <h2 className="font-semibold text-2xl">{group.category}</h2>
             {group.items.map((item) => (
               <div key={item.text} className="flex flex-col space-y-1">
                 <label
                   htmlFor={item.text}
-                  className="flex cursor-pointer items-center"
+                  className="flex cursor-pointer items-center group"
                 >
                   <input
                     type="checkbox"
                     id={item.text}
                     value=""
-                    className="size-4 appearance-none border cursor-pointer rounded-md mr-2 border-violet-500 checked:bg-no-repeat hover:bg-violet-100 checked:bg-center checked:border-violet-500 checked:bg-violet-100"
+                    className="size-4 appearance-none border cursor-pointer rounded-md mr-2 border-violet-500 checked:bg-no-repeat hover:bg-violet-100 checked:bg-center checked:border-violet-500 checked:bg-violet-100 transition-transform duration-200 transform hover:scale-105"
                     onChange={() => handleCheckboxChange(item.text)}
                   />
                   {item.text}
+                  <div className="relative">
+                    <span className="absolute z-10 hidden w-48 p-2 text-xs text-white bg-black rounded-md group-hover:block -top-6 left-1/2 transform -translate-x-1/2 transition-opacity duration-300">
+                      {item.description}
+                    </span>
+                  </div>
                 </label>
-                <span className="hidden md:flex text-xs pl-6">
-                  {item.description}
-                </span>
               </div>
             ))}
           </div>
