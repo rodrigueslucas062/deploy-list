@@ -34,7 +34,7 @@ export default function Home() {
                     type="checkbox"
                     id={item.text}
                     value=""
-                    className="size-4 appearance-none border cursor-pointer border-gray-300 rounded-md mr-2 hover:border-violet-500 checked:bg-no-repeat checked:bg-center checked:border-violet-500 checked:bg-violet-100"
+                    className="size-4 appearance-none border cursor-pointer rounded-md mr-2 border-violet-300 checked:bg-no-repeat checked:bg-center checked:border-violet-500 checked:bg-violet-100"
                     onChange={() => handleCheckboxChange(item.text)}
                   />
                   {item.text}
