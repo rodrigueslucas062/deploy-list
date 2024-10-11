@@ -39,7 +39,7 @@ export default function Home() {
                   />
                   {item.text}
                 </label>
-                <span className="peer-checked/done:hidden text-xs pl-6">
+                <span className="hidden md:flex text-xs pl-6">
                   {item.description}
                 </span>
               </div>
@@ -49,7 +49,7 @@ export default function Home() {
         <div className="sticky bottom-4 w-full bg-zinc-950/90 p-2 backdrop-blur-sm rounded-2xl">
           <div className="h-5 bg-violet-300 rounded-full relative">
             <div
-              className="h-full bg-purple-500 rounded-full"
+              className="h-full bg-purple-500 rounded-full transition-width duration-300 ease-in-out"
               style={{ width: `${progress}%` }}
             />
             <p className="absolute inset-0 flex items-center justify-center text-zinc-900 text-sm font-semibold">
